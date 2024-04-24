@@ -10,7 +10,7 @@ function App(){
             <Box bgcolor={"background.default"}>
                 <BrowserRouter>
                     <Routes>
-                    <Route exact path= "/" element={<Home/>} />
+                    <Route exact path= "/portfolio" element={<Home/>} />
                     </Routes>
 
                 </BrowserRouter>
