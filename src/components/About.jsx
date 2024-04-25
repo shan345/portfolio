@@ -54,7 +54,7 @@ function About(){
                     <Grid container pt={{xs:"30px", lg: "50px"}} pl={{lg: "40px"}} display="flex" flexDirection="column" alignItems={{xs:"center", lg:"flex-start"}} textAlign={{xs:"center", lg:"left" }}>
                       <Grid item display="flex" flexDirection="row" alignItems="center" >
                         <Avatar alt="My-Image" src={`${education}`}></Avatar>
-                        <Typography variant="h5" color="text.secondary" ml="5px">EDUCATION</Typography>                     
+                        <Typography variant="h6" color="text.secondary" ml="5px">EDUCATION</Typography>                     
                       </Grid>
                       <Grid item  >
                         <Typography color="text.primary" ml={{lg:"45px"}}>B.E - Computer Science and Engineering.</Typography>
@@ -65,7 +65,7 @@ function About(){
                     <Grid container pt="50px" pl={{lg: "40px"}} display="flex" flexDirection="column" alignItems={{xs:"center", lg:"flex-start"}} textAlign={{xs:"center", lg:"left" }}>
                       <Grid item display="flex" flexDirection="row" alignItems="center" >
                         <Avatar alt="My-Image" src={`${certification}`}></Avatar>
-                        <Typography variant="h5" color="text.secondary" ml="5px">CERTIFICATION</Typography>                     
+                        <Typography variant="h6" color="text.secondary" ml="5px">CERTIFICATION</Typography>                     
                       </Grid>
                       <Grid item  >
                         <Typography color="text.primary" ml={{lg:"45px"}}>Python Programming - UC-3feb850d-9a67-45d3-af9a-91d7f38651bf</Typography>
@@ -76,7 +76,7 @@ function About(){
                     <Grid container pt="50px" pl={{lg: "40px"}} display="flex" flexDirection="column" alignItems={{xs:"center", lg:"flex-start"}} textAlign={{xs:"center", lg:"left" }}>
                       <Grid item display="flex" flexDirection="row" alignItems="center" >
                         <Avatar alt="My-Image" src={`${intern}`}></Avatar>
-                        <Typography variant="h5" color="text.secondary" ml="5px">INTERNSHIP</Typography>                     
+                        <Typography variant="h6" color="text.secondary" ml="5px">INTERNSHIP</Typography>                     
                       </Grid>
                       <Grid item  >
                         <Typography color="text.primary" ml={{lg:"45px"}}>Edify Techno Solutions - Full Stack Web Development (MERN)</Typography>
