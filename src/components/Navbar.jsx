@@ -50,9 +50,9 @@ function Navbar(props){
       <HideOnScroll {...props}>  
         <AppBar position="fixed" sx={{ backgroundColor:"#15124CAF"}} >
             <Toolbar>
-                <Grid container>
-                    <Grid item container xs={12} justifyContent="center">
-                        <Tabs value={value} onChange={handleChange}  sx={{}} textColor="#ffffff"  indicatorColor= "secondary">
+                <Grid container justifyContent="center">
+                    <Grid container item xs={12} lg={12} justifyContent="center">
+                        <Tabs value={value} onChange={handleChange} textColor="#ffffff"  indicatorColor= "secondary">
                           <Tab label="HOME" onClick={() => scrollToSection("home")}/>
                           <Tab label="ABOUT" onClick={() => scrollToSection("about")}/>
                           <Tab label="SKILLS" onClick={() => scrollToSection("tech-skills")}/>

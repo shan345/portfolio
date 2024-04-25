@@ -40,8 +40,7 @@ const ContactForm = () => {
   return (
     <React.Fragment>
        <ThemeProvider theme={theme}>
-          <Box display= "flex" flexDirection= "column" justifyContent="center" alignItems="center" mt="60px">
-
+          <Box mt="60px">
             <Grid container justifyContent="center">
               <Grid item xs={12} mb="20px" display="flex" flexDirection="row" alignItems="center" justifyContent="center">
                   <Avatar alt="Mail us"  src={`${MailIcon}`}></Avatar>
