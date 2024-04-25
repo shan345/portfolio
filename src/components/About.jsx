@@ -39,8 +39,8 @@ function About(){
       <ThemeProvider theme={theme}> 
         <Box id="about" height="auto" mt="60px">
             <Grid container justifyContent="center" alignItems="center">
-                <Grid container item xs={12} lg={5} justifyContent="center" alignItems="center">
-                    <Avatar alt="My-Image" position="fixed" src={`${myImg}`} sx={{ width: {xs:"400px",lg:"480px"}, height: {xs:"400px", lg:"480px"}}}/>
+                <Grid container item xs={10} lg={5} justifyContent="center" alignItems="center">
+                    <Avatar alt="My-Image" position="fixed" src={`${myImg}`} sx={{ width: {xs:"300px",lg:"480px"}, height: {xs:"300px", lg:"480px"}}}/>
                 </Grid>
 
                 <Grid container item xs={10} lg={7} justifyContent={{xs: "center", lg:"flex-start"}} mt={{xs:"20px"}}>
