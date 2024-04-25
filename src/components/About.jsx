@@ -57,8 +57,8 @@ function About(){
                         <Typography color="text.secondary" ml="5px">EDUCATION</Typography>                     
                       </Grid>
                       <Grid item  >
-                        <Typography color="text.primary" ml="45px">B.E - Computer Science and Engineering.</Typography>
-                        <Typography color="text.primary" ml="45px">Jerusalem College of Engineering, Chennai.</Typography>                     
+                        <Typography color="text.primary" ml={{lg:"45px"}}>B.E - Computer Science and Engineering.</Typography>
+                        <Typography color="text.primary" ml={{lg:"45px"}}>Jerusalem College of Engineering, Chennai.</Typography>                     
                       </Grid>
                     </Grid>
                     
@@ -68,8 +68,8 @@ function About(){
                         <Typography color="text.secondary" ml="5px">CERTIFICATION</Typography>                     
                       </Grid>
                       <Grid item  >
-                        <Typography color="text.primary" ml="45px">Python Programming - UC-3feb850d-9a67-45d3-af9a-91d7f38651bf</Typography>
-                        <Typography color="text.primary" ml="45px">Full Stack Web Development (MERN) - UC-49654252-1482-47a6-bd4a-20bf2d1b478a</Typography>                     
+                        <Typography color="text.primary" ml={{lg:"45px"}}>Python Programming - UC-3feb850d-9a67-45d3-af9a-91d7f38651bf</Typography>
+                        <Typography color="text.primary" ml={{lg:"45px"}}>Full Stack Web Development (MERN) - UC-49654252-1482-47a6-bd4a-20bf2d1b478a</Typography>                     
                       </Grid>
                     </Grid>
 
@@ -79,8 +79,8 @@ function About(){
                         <Typography color="text.secondary" ml="5px">INTERNSHIP</Typography>                     
                       </Grid>
                       <Grid item  >
-                        <Typography color="text.primary" ml="45px">Edify Techno Solutions - Full Stack Web Development (MERN)</Typography>
-                        <Typography color="text.primary" ml="45px">Duration - 1 month</Typography>                     
+                        <Typography color="text.primary" ml={{lg:"45px"}}>Edify Techno Solutions - Full Stack Web Development (MERN)</Typography>
+                        <Typography color="text.primary" ml={{lg:"45px"}}>Duration - 1 month</Typography>                     
                       </Grid>
                     </Grid>
 

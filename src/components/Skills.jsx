@@ -20,48 +20,50 @@ function About(){
     <React.Fragment>
       
       <ThemeProvider theme={theme}> 
-        <Box display= "flex" flexDirection= "column" alignItems="center" mt="70px">
+        <Box mt="70px">
         
-            <Grid container spacing={2} xs={12} sm={10} lg={5} md={7}>
+            <Grid container justifyContent="center">
                 <Grid item xs={12} marginBottom="20px" display="flex" flexDirection="row" alignItems="center" justifyContent="center">
                     <Avatar alt="Tech Skill"  src={`${techSkill}`}></Avatar>
                     <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight= 'bold'>TECHNICAL SKILLS</Typography>
                 </Grid>
-                <Grid item xs={8}>
-                    <Item>PYTHON</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>C</Item>
-                </Grid>
-                <Grid item xs={6}>
-                    <Item>JAVA SCRIPT</Item>
-                </Grid>
-                <Grid item xs={6}>
-                    <Item>MONGO DB</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>EXPRESS JS</Item>
-                </Grid>
-                <Grid item xs={8}>
-                    <Item>REACT JS</Item>
-                </Grid>
-                <Grid item xs={8}>
-                    <Item>HTML & CSS</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>NODE JS</Item>
-                </Grid>
-                <Grid item xs={2}>
-                    <Item>SQL</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>GIT</Item>
-                </Grid>
-                <Grid item xs={2}>
-                    <Item>API</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>ETHICAL HACKING</Item>
+                <Grid container spacing={2} xs={10} sm={10} lg={5} md={7}>
+                    <Grid item xs={8}>
+                        <Item>PYTHON</Item>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Item>C</Item>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Item>JAVA SCRIPT</Item>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Item>MONGO DB</Item>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Item>EXPRESS JS</Item>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Item>REACT JS</Item>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Item>HTML & CSS</Item>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Item>NODE JS</Item>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Item>SQL</Item>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Item>GIT</Item>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Item>API</Item>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Item>ETHICAL HACKING</Item>
+                    </Grid>
                 </Grid>
             </Grid>
 

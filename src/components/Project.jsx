@@ -60,127 +60,68 @@ export default function Project() {
     }
   };
 
+  const projectsData = [
+    {
+      title: 'SIMON GAME',
+      description:
+        'The Simon game is a classic memory and pattern recognition game where players follow sequences of colors and sounds. It challenges players to remember and repeat longer sequences as the game progresses, testing their concentration and cognitive skills.',
+      image: simon,
+      more: 'more abt simon',
+    },
+    {
+      title: 'HUMAN SPEECH EMOTION RECOGNITION',
+      description:
+        'Human speech emotion recognition is a technology that analyzes vocal cues to detect and classify emotions in spoken language, aiding in understanding and responding to human emotions effectively. It utilizes machine learning algorithms to process audio features and identify emotional states.',
+      image: ser,
+      more: 'more abt SER',
+    },
+    {
+      title: 'PORTFOLIO',
+      description:
+        'This project showcases my skills and experience in web development, particularly with React.js and Material-UI components. Through this portfolio, I aim to demonstrate my ability to create responsive and visually appealing web applications. Explore the various components and features to get a glimpse of my coding style and design aesthetics.',
+      image: portfolio,
+      more: 'more abt portfolio',
+    },
+    
+  ];
 
   return (
 
     <React.Fragment>
       
     <ThemeProvider theme={theme}> 
-      <Box display= "flex" flexDirection= "row" justifyContent="center" alignItems="center" mt="60px">
-      
-        <Grid container justifyContent="center" xs={12} sm={10} lg={8} >
-              <Grid item xs={12} mb="20px" display="flex" flexDirection="row" alignItems="center" justifyContent="center">
-                  <Avatar alt="Tech Skill"  src={`${techSkill}`}></Avatar>
-                  <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight= 'bold'>PROJECTS</Typography>
-              </Grid>
-              
+      <Box mt="60px">
+        <Grid container justifyContent="center">
+          <Grid item xs={12} mb="20px" display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+              <Avatar alt="Tech Skill"  src={`${techSkill}`}></Avatar>
+              <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight= 'bold'>PROJECTS</Typography>
+          </Grid>
 
-
-              <Grid container item spacing={{xs:2, lg:3 }}>
-                <Grid item xs={4}>
-                  <Card sx={{bgcolor:"#1B324BDC"}}>
-                      <CardMedia
-                          component="img"
-                          height="194"
-                          src={`${simon}`}
-                          alt="Paella dish"
-                      />
+              <Grid container spacing={3} xs={12} md={10} lg={8} justifyContent="center">
+                {projectsData.map((project, index) => (
+                  <Grid item xs={10} md={4} lg={4} >
+                    <Card key={index} sx={{bgcolor:"#1B324BDC"}}>
+                      <CardMedia component="img" height="194" src={project.image} alt={project.title} />
                       <CardContent>
-                          <Typography color="#ffffff" sx={{ fontWeight: 'bold' }}>SIMON GAME</Typography>
-                          <Typography variant="body2" color="text.primary">
-                          The Simon game is a classic memory and pattern recognition game where players follow sequences of colors and sounds. It challenges players to remember and repeat longer sequences as the game progresses, testing their concentration and cognitive skills.
-                          </Typography>
+                          <Typography color="#ffffff" sx={{ fontWeight: 'bold' }}>{project.title} </Typography>
+                          <Typography variant="body2" color="text.primary"> {project.description} </Typography>
                       </CardContent>
                       <CardActions disableSpacing>
                           <IconButton aria-label="share" onClick={handleShareClick}>
                               <ShareIcon />
                           </IconButton>
-                          <ExpandMore
-                          expand={expanded}
-                          onClick={handleExpandClick}
-                          aria-expanded={expanded}
-                          aria-label="show more"
-                          >
+                          <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
                               <ExpandMoreIcon />
                           </ExpandMore>
                       </CardActions>
                       <Collapse in={expanded} timeout="auto" unmountOnExit>
                           <CardContent>
-                              <Typography paragraph>Method:</Typography>
+                              <Typography paragraph>{project.more}</Typography>
                           </CardContent>
                       </Collapse>
-                  </Card>
-                </Grid>
-
-                <Grid item xs={4}>
-                  <Card sx={{bgcolor:"#1B324BDC"}}>
-                      <CardMedia
-                          component="img"
-                          height="194"
-                          src={`${ser}`}
-                          alt="Paella dish"
-                      />
-                      <CardContent>
-                          <Typography color="#ffffff" sx={{ fontWeight: 'bold' }}>HUMAN SPEECH EMOTION RECOGNITION</Typography>
-                          <Typography variant="body2" color="text.primary">
-                          Human speech emotion recognition is a technology that analyzes vocal cues to detect and classify emotions in spoken language, aiding in understanding and responding to human emotions effectively. It utilizes machine learning algorithms to process audio features and identify emotional states.
-                          </Typography>
-                      </CardContent>
-                      <CardActions disableSpacing>
-                          <IconButton aria-label="share" onClick={handleShareClick}>
-                              <ShareIcon />
-                          </IconButton>
-                          <ExpandMore
-                          expand={expanded}
-                          onClick={handleExpandClick}
-                          aria-expanded={expanded}
-                          aria-label="show more"
-                          >
-                              <ExpandMoreIcon />
-                          </ExpandMore>
-                      </CardActions>
-                      <Collapse in={expanded} timeout="auto" unmountOnExit>
-                          <CardContent>
-                              <Typography paragraph>Method:</Typography>
-                          </CardContent>
-                      </Collapse>
-                  </Card>
-                </Grid>
-
-                <Grid item xs={4}>
-                  <Card sx={{bgcolor:"#1B324BDC"}}>
-                      <CardMedia
-                          component="img"
-                          height="194"
-                          src={`${portfolio}`}
-                          alt="Paella dish"
-                      />
-                      <CardContent>
-                          <Typography color="#ffffff" sx={{ fontWeight: 'bold' }}>PORTFOLIO</Typography>
-                          <Typography variant="body2" color="text.primary">
-                          This project showcases my skills and experience in web development, particularly with React.js and Material-UI components. Through this portfolio, I aim to demonstrate my ability to create responsive and visually appealing web applications. Explore the various components and features to get a glimpse of my coding style and design aesthetics. 
-                          </Typography>
-                      </CardContent>
-                      <CardActions disableSpacing>
-                          <IconButton aria-label="share" onClick={handleShareClick}>
-                              <ShareIcon />
-                          </IconButton>
-                          <ExpandMore
-                          expand={expanded}
-                          onClick={handleExpandClick}
-                          aria-expanded={expanded}
-                          aria-label="show more"
-                          >
-                              <ExpandMoreIcon />
-                          </ExpandMore>
-                      </CardActions>
-                      <Collapse in={expanded} timeout="auto" unmountOnExit>
-                          <CardContent>
-                              <Typography paragraph>Method:</Typography>
-                          </CardContent>
-                      </Collapse>
-                  </Card>
-                </Grid>
+                    </Card>
+                  </Grid>
+                ))}
 
               </Grid>
           </Grid>
