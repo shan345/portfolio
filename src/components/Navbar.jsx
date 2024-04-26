@@ -56,7 +56,7 @@ function ScrollTop(props) {
       <Box
         onClick={handleClick}
         role="presentation"
-        sx={{ position: 'fixed', bottom: 25, right: 20 }}
+        sx={{ position: 'fixed', bottom: 25, right: 20,  zIndex: 1000 }}
       >
         {children}
       </Box>
