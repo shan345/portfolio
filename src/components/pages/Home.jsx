@@ -10,11 +10,13 @@ import { Box } from "@mui/material"
 import Particle from "../Particle";
 import Project from "../Project"
 import Contact from "../Contact"
+import Fade from '@mui/material/Fade';
 
 
 function Home() {
     return(
         <React.Fragment>
+        <Fade in timeout={1000}>
         <Box id="home">
             
             <Box>
@@ -29,6 +31,7 @@ function Home() {
             <Footer/>
             
         </Box>
+        </Fade>
         </React.Fragment>
     );
 }

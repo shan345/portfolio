@@ -7,7 +7,7 @@ import Typewriter from 'typewriter-effect';
 import ResumeIco from '@mui/icons-material/Description';
 import SvgIcon from '@mui/material/SvgIcon';
 import { makeStyles } from '@mui/styles';
-import Fade from '@mui/material/Fade';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -101,12 +101,12 @@ function Banner(){
                 alignItems:"center",
                 justifyContent: "center"
               }}>
-          <Fade in timeout={1000}><Box sx={{position:"absolute", width:"100%", height: "100%", backgroundImage:{xs:`url(${mobbg})`, md:`url(${bg})`}, backgroundColor: "background.default", backgroundAttachment: "fixed",backgroundRepeat: "no-repeat", backgroundSize: "cover", zIndex: -1, }} /></Fade>
+          <Box sx={{position:"absolute", width:"100%", height: "100%", backgroundImage:{xs:`url(${mobbg})`, md:`url(${bg})`}, backgroundColor: "background.default", backgroundAttachment: "fixed",backgroundRepeat: "no-repeat", backgroundSize: "cover", zIndex: -1, }} />
               
               <Grid container sx={{backgroundColor: "#06050956", borderRadius: '16px', border:"1px solid #A0A0A03D", height: {xs:"40%",md:"50%"}, width:{xs:"80%", md:"40%"}, alignItems: "center", justifyContent: "center", textAlign: "center", }}  >
 
                   <Grid item xs={12} >
-                      <Fade in timeout={1000}><Typography sx={{color: "#EEFF00D2", fontWeight: 'bold', fontSize: 50, fontFamily: "Dancing Script"}}>Hai there!</Typography></Fade>
+                      <Typography sx={{color: "#EEFF00D2", fontWeight: 'bold', fontSize: 50, fontFamily: "Dancing Script"}}>Hai there!</Typography>
                       <Typography sx={{color: "#DEDEDE", fontWeight: 'bold', fontSize: {xs:35, lg:50}, fontFamily: "Segoe UI"}} >
                           <Typewriter onInit={typing}   options={{cursor: "/>", loop: true, deleteSpeed: 5}}/>
                       </Typography>
