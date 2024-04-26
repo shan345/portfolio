@@ -9,6 +9,7 @@ import intern from "../assets/internship-icon.png";
 import profile from "../assets/user.png";
 import ResumeIco from '@mui/icons-material/Description';
 import Grow from '@mui/material/Grow';
+import Fade from '@mui/material/Fade';
 
 
 
@@ -37,7 +38,7 @@ function About(){
 
   // Callback function to handle scroll event
   const handleScroll = () => {
-    if (window.scrollY > 200) { // Adjust the scroll threshold as needed
+    if (window.scrollY > 300) { // Adjust the scroll threshold as needed
       setFadeTriggered(true);
     } else {
       setFadeTriggered(false);
@@ -60,7 +61,7 @@ function About(){
         <Box id="about" height="auto" mt="60px">
             <Grid container justifyContent="center" alignItems="center">
                 <Grid container item xs={10} lg={5} justifyContent="center" alignItems="center">
-                    <Grow in={fadeTriggered} timeout={5000}><Avatar alt="My-Image" position="relative" src={`${myImg}`} sx={{ width: {xs:"300px",lg:"480px"}, height: {xs:"300px", lg:"480px"}}}/></Grow>
+                    <Fade in={fadeTriggered} timeout={500}><Avatar alt="My-Image" position="relative" src={`${myImg}`} sx={{ width: {xs:"300px",lg:"480px"}, height: {xs:"300px", lg:"480px"}}}/></Fade>
                 </Grid>
                 
                 <Grid container item xs={10} lg={7} justifyContent={{xs: "center", lg:"flex-start"}} mt={{xs:"20px"}}>
