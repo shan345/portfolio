@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    top:"0px"
+    bottom:"0px"
   },
   arrow: {
     opacity: 0,
@@ -114,10 +114,10 @@ function Banner(){
                   
               </Grid>
               <Box ml="-30px" className={classes.root}>
-      <Box className={`${classes.arrow} ${classes.arrowFirst}`} />
-      <Box className={`${classes.arrow} ${classes.arrowSecond}`} />
-      <Box className={`${classes.arrow} ${classes.arrowThird}`} />
-    </Box>
+                <Box className={`${classes.arrow} ${classes.arrowFirst}`} />
+                <Box className={`${classes.arrow} ${classes.arrowSecond}`} />
+                <Box className={`${classes.arrow} ${classes.arrowThird}`} />
+              </Box>
           </Box>
         </Box>
       </ThemeProvider> 
