@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.998e1c93.js",
+    "main.js": "/static/js/main.316f0875.js",
     "static/media/My_Image.jpg": "/static/media/My_Image.0fe62a375f60bced1ab9.jpg",
     "static/media/bg.png": "/static/media/bg.1166367bef6a2838e3de.png",
     "static/media/portfolio.png": "/static/media/portfolio.a1d4a462bb50167fbb69.png",
@@ -15,9 +15,9 @@
     "static/media/internship-icon.png": "/static/media/internship-icon.c18cf0df15f126395fac.png",
     "static/media/educa.png": "/static/media/educa.0a4ebaddeeb10ab6aad7.png",
     "index.html": "/index.html",
-    "main.998e1c93.js.map": "/static/js/main.998e1c93.js.map"
+    "main.316f0875.js.map": "/static/js/main.316f0875.js.map"
   },
   "entrypoints": [
-    "static/js/main.998e1c93.js"
+    "static/js/main.316f0875.js"
   ]
 }
