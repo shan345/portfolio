@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import theme from "./ui/Theme";
 import { AppBar, Typography,ThemeProvider, Link, Icon,Grid,Divider, Toolbar, Button, Avatar, Tabs, Tab, Box, useScrollTrigger, Slide, Container, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -8,6 +8,7 @@ import education from "../assets/educa.png";
 import intern from "../assets/internship-icon.png";
 import profile from "../assets/user.png";
 import ResumeIco from '@mui/icons-material/Description';
+import Grow from '@mui/material/Grow';
 
 
 
@@ -32,6 +33,25 @@ function About(){
 
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
+  const [fadeTriggered, setFadeTriggered] = useState(false);
+
+  // Callback function to handle scroll event
+  const handleScroll = () => {
+    if (window.scrollY > 200) { // Adjust the scroll threshold as needed
+      setFadeTriggered(true);
+    } else {
+      setFadeTriggered(false);
+    }
+  };
+
+  // Attach scroll event listener when component mounts
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   
   return(
     <React.Fragment>
@@ -40,17 +60,19 @@ function About(){
         <Box id="about" height="auto" mt="60px">
             <Grid container justifyContent="center" alignItems="center">
                 <Grid container item xs={10} lg={5} justifyContent="center" alignItems="center">
-                    <Avatar alt="My-Image" position="relative" src={`${myImg}`} sx={{ width: {xs:"300px",lg:"480px"}, height: {xs:"300px", lg:"480px"}}}/>
+                    <Grow in={fadeTriggered} timeout={5000}><Avatar alt="My-Image" position="relative" src={`${myImg}`} sx={{ width: {xs:"300px",lg:"480px"}, height: {xs:"300px", lg:"480px"}}}/></Grow>
                 </Grid>
-
+                
                 <Grid container item xs={10} lg={7} justifyContent={{xs: "center", lg:"flex-start"}} mt={{xs:"20px"}}>
+                    <Grow in={fadeTriggered} timeout= {1000}>
                     <Box display="flex" flexDirection="row" alignItems="center">
                       <Avatar alt="profile" src={`${profile}`}></Avatar>
                       <Typography variant="h4" color="text.secondary" fontWeight= 'bold' mr="10px">ABOUT ME</Typography>
                       <Link href="https://drive.google.com/file/d/1oxhexkyGn4tRlBuQI540a_a5JU65OMn0/view?usp=sharing"><ResumeIco fontSize="large" sx={{color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/> </Link>
                     </Box>
+                    </Grow>
                     {isLargeScreen && <Divider color="#B0BAC9"/>}
-
+                    <Grow in={fadeTriggered} timeout= {1500}>
                     <Grid container pt={{xs:"30px", lg: "50px"}} pl={{lg: "40px"}} display="flex" flexDirection="column" alignItems={{xs:"center", lg:"flex-start"}} textAlign={{xs:"center", lg:"left" }}>
                       <Grid item display="flex" flexDirection="row" alignItems="center" >
                         <Avatar alt="My-Image" src={`${education}`}></Avatar>
@@ -61,7 +83,9 @@ function About(){
                         <Typography color="text.primary" ml={{lg:"45px"}}>Jerusalem College of Engineering, Chennai.</Typography>                     
                       </Grid>
                     </Grid>
+                    </Grow>
                     
+                    <Grow in={fadeTriggered} timeout= {2000}>
                     <Grid container pt="50px" pl={{lg: "40px"}} display="flex" flexDirection="column" alignItems={{xs:"center", lg:"flex-start"}} textAlign={{xs:"center", lg:"left" }}>
                       <Grid item display="flex" flexDirection="row" alignItems="center" >
                         <Avatar alt="My-Image" src={`${certification}`}></Avatar>
@@ -72,7 +96,9 @@ function About(){
                         <Typography color="text.primary" ml={{lg:"45px"}}>Full Stack Web Development (MERN) - UC-49654252-1482-47a6-bd4a-20bf2d1b478a</Typography>                     
                       </Grid>
                     </Grid>
+                    </Grow>
 
+                    <Grow in={fadeTriggered} timeout= {2500}>
                     <Grid container pt="50px" pl={{lg: "40px"}} display="flex" flexDirection="column" alignItems={{xs:"center", lg:"flex-start"}} textAlign={{xs:"center", lg:"left" }}>
                       <Grid item display="flex" flexDirection="row" alignItems="center" >
                         <Avatar alt="My-Image" src={`${intern}`}></Avatar>
@@ -83,6 +109,7 @@ function About(){
                         <Typography color="text.primary" ml={{lg:"45px"}}>Duration - 1 month</Typography>                     
                       </Grid>
                     </Grid>
+                    </Grow>
 
 
 

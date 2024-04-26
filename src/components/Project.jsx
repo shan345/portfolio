@@ -7,8 +7,7 @@ import techSkill from "../assets/skill-development.png"
 import simon from "../assets/simon.png"
 import ser from "../assets/SER.png"
 import portfolio from "../assets/portfolio.png"
-
-
+import Grow from '@mui/material/Grow';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -36,6 +35,25 @@ const ExpandMore = styled((props) => {
 
 export default function Project() {
   const [expanded, setExpanded] = React.useState(false);
+
+  const [fadeTriggered, setFadeTriggered] = useState(false);
+
+    // Callback function to handle scroll event
+    const handleScroll = () => {
+        if (window.scrollY > 900) { // Adjust the scroll threshold as needed
+        setFadeTriggered(true);
+        } else {
+        setFadeTriggered(false);
+        }
+    };
+
+    // Attach scroll event listener when component mounts
+    React.useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+        window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -72,6 +90,7 @@ export default function Project() {
         live:"https://shan345.github.io/simon",
         git:"https://github.com/shan345/simon"
           },
+      transitionTime: 4000,
     },
     {
       title: 'HUMAN SPEECH EMOTION RECOGNITION',
@@ -84,6 +103,7 @@ export default function Project() {
         live:"",
         git:"",
           },
+      transitionTime: 4500,
     },
     {
       title: 'PORTFOLIO',
@@ -96,6 +116,7 @@ export default function Project() {
         live:"https://www.shantechworld.com",
         git:"https://github.com/shan345/portfolio",
       },
+      transitionTime: 5000,
     }
     
   ];
@@ -107,14 +128,17 @@ export default function Project() {
     <ThemeProvider theme={theme}> 
       <Box mt="60px">
         <Grid container justifyContent="center">
+          <Grow in={fadeTriggered} timeout={3500}>
           <Grid item xs={12} mb="20px" display="flex" flexDirection="row" alignItems="center" justifyContent="center">
               <Avatar alt="Tech Skill"  src={`${techSkill}`}></Avatar>
               <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight= 'bold'>PROJECTS</Typography>
           </Grid>
+          </Grow>
 
               <Grid container spacing={3} xs={12} md={10} lg={8} justifyContent="center">
                 {projectsData.map((project, index) => (
                   <Grid item xs={10} md={4} lg={4} >
+                    <Grow in={fadeTriggered} timeout={project.transitionTime}>
                     <Card key={index} sx={{bgcolor:"#1B324BDC"}}>
                       <CardMedia component="img" height="194" src={project.image} alt={project.title} />
                       <CardContent>
@@ -138,6 +162,7 @@ export default function Project() {
                           </CardContent>
                       </Collapse>
                     </Card>
+                    </Grow>
                   </Grid>
                 ))}
 
