@@ -123,10 +123,10 @@ export default function Project() {
                       </CardContent>
                       <CardActions disableSpacing>
                           <IconButton aria-label="share" onClick={handleShareClick}>
-                              <ShareIcon />
+                              <ShareIcon sx={{ color: "#B0BAC9" }}/>
                           </IconButton>
                           <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
-                              <ExpandMoreIcon />
+                              <ExpandMoreIcon sx={{ color: "#B0BAC9" }}/>
                           </ExpandMore>
                       </CardActions>
                       <Collapse in={expanded} timeout="auto" unmountOnExit>

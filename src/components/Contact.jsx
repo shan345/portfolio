@@ -44,7 +44,7 @@ const ContactForm = () => {
             <Grid container justifyContent="center">
               <Grid item xs={12} mb="20px" display="flex" flexDirection="row" alignItems="center" justifyContent="center">
                   <Avatar alt="Mail us"  src={`${MailIcon}`}></Avatar>
-                  <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight= 'bold'>MAIL US</Typography>
+                  <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight= 'bold'>PING ME</Typography>
               </Grid>
               <Grid item xs={10} md={6}>
                 <form onSubmit={handleSubmit}>
@@ -88,12 +88,12 @@ const ContactForm = () => {
             </Grid>
 
             <Grid container justifyContent="center" mt="100px">
-              <Grid container item alignItems="center" justifyContent="center" xs={12}>
+              <Grid container item alignItems="center" justifyContent="center" xs={11} md={12}>
                 <Link href="https://www.instagram.com/jamnishan/"><InstagramIcon fontSize='large' sx={{color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
-                <Link href="https://github.com/shan345"><GitHubIcon fontSize='large' sx={{ml:{xs:"50px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
-                <Link href="https://www.linkedin.com/in/shan345/"><LinkedInIcon fontSize='large' sx={{ml:{xs:"50px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
-                <Link href="https://www.youtube.com/@shantechworld"><YouTubeIcon fontSize='large' sx={{ml:{xs:"50px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
-                <Link href="https://twitter.com/jamnishan"><XIcon fontSize='large' sx={{ml:{xs:"50px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
+                <Link href="https://github.com/shan345"><GitHubIcon fontSize='large' sx={{ml:{xs:"40px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
+                <Link href="https://www.linkedin.com/in/shan345/"><LinkedInIcon fontSize='large' sx={{ml:{xs:"40px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
+                <Link href="https://www.youtube.com/@shantechworld"><YouTubeIcon fontSize='large' sx={{ml:{xs:"40px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
+                <Link href="https://twitter.com/jamnishan"><XIcon fontSize='large' sx={{ml:{xs:"40px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
               </Grid>
             </Grid>
 

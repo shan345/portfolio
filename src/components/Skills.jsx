@@ -27,7 +27,7 @@ function About(){
                     <Avatar alt="Tech Skill"  src={`${techSkill}`}></Avatar>
                     <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight= 'bold'>TECHNICAL SKILLS</Typography>
                 </Grid>
-                <Grid container spacing={2} xs={10} sm={10} lg={5} md={7}>
+                <Grid container spacing={2} xs={12} sm={10} lg={5} md={7}>
                     <Grid item xs={8}>
                         <Item>PYTHON</Item>
                     </Grid>
@@ -55,13 +55,13 @@ function About(){
                     <Grid item xs={2}>
                         <Item>SQL</Item>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={3}>
                         <Item>GIT</Item>
                     </Grid>
                     <Grid item xs={2}>
                         <Item>API</Item>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={5}>
                         <Item>ETHICAL HACKING</Item>
                     </Grid>
                 </Grid>
