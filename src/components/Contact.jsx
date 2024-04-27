@@ -28,7 +28,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        await axios.post('http://localhost:5000/send-email', formData);
+        await axios.post('https://portfolio-server-ruby.vercel.app/send-email', formData);
         alert('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' }); // Clear form fields
     } catch (error) {
