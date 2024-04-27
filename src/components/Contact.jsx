@@ -12,9 +12,13 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
+import { CircularProgress } from '@mui/material';
+
 
 const ContactForm = () => {
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,10 +35,12 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       await axios.post('https://portfolio-server-ruby.vercel.app/send-email', formData);
       setShowSuccessDialog(true); // Show the success dialog
       setFormData({ name: '', email: '', message: '' }); // Clear form fields
+      setIsSubmitting(false);
     } catch (error) {
       console.error('Error sending message:', error);
       alert('Failed to send message. Please try again later.');
@@ -83,8 +89,8 @@ const ContactForm = () => {
                     sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#B0BAC9' }, '&:hover fieldset': { borderColor: '#ffffff' }, '&.Mui-focused fieldset': { borderColor: '#1B324B' }, }, }}
                   />
                   <Box display="flex" flexDirection="row" alignItems="center">
-                    <Button type="submit" variant="contained" color="primary">
-                      Send
+                    <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
+                      {isSubmitting ? <CircularProgress size={24} color="primary" /> : 'Send'}
                     </Button>
                     <Typography color="text.primary" ml="10px" mr="10px" >or</Typography>
                     <Link href="mailto:jamnishan345@gmail.com"><Button variant="contained" color="primary">
