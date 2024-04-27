@@ -78,10 +78,14 @@ const ContactForm = () => {
                     margin="normal"
                     sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#B0BAC9' }, '&:hover fieldset': { borderColor: '#ffffff' }, '&.Mui-focused fieldset': { borderColor: '#1B324B' }, }, }}
                   />
-                  <Box>
+                  <Box display="flex" flexDirection="row" alignItems="center">
                     <Button type="submit" variant="contained" color="primary">
                       Send
                     </Button>
+                    <Typography color="text.primary" ml="10px" mr="10px" >or</Typography>
+                    <Link href="mailto:jamnishan345@gmail.com"><Button variant="contained" color="primary">
+                      Mail Me
+                    </Button></Link>
                   </Box>
                 </form>
               </Grid>
