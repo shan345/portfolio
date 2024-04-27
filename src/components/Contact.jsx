@@ -9,8 +9,12 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
 
 const ContactForm = () => {
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,12 +32,12 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        await axios.post('https://portfolio-server-ruby.vercel.app/send-email', formData);
-        alert('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' }); // Clear form fields
+      await axios.post('https://portfolio-server-ruby.vercel.app/send-email', formData);
+      setShowSuccessDialog(true); // Show the success dialog
+      setFormData({ name: '', email: '', message: '' }); // Clear form fields
     } catch (error) {
-        console.error('Error sending message:', error);
-        alert('Failed to send message. Please try again later.');
+      console.error('Error sending message:', error);
+      alert('Failed to send message. Please try again later.');
     }
   };
 
@@ -100,6 +104,15 @@ const ContactForm = () => {
                 <Link href="https://twitter.com/jamnishan"><XIcon fontSize='large' sx={{ml:{xs:"40px", lg:"100px"}, color:"text.primary", transition: 'color 0.3s ease-in-out', '&:hover': { color: '#ffffff',}}}/></Link>
               </Grid>
             </Grid>
+
+            <Dialog open={showSuccessDialog} onClose={() => setShowSuccessDialog(false)}>
+              <DialogContent>
+                <Typography color="primary" variant="h6">Message sent successfully!</Typography>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => setShowSuccessDialog(false)} color="primary">Close</Button>
+              </DialogActions>
+            </Dialog>            
 
           </Box>
       </ThemeProvider>
