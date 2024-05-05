@@ -61,6 +61,7 @@ const ContactForm = () => {
                   <TextField
                     name="name"
                     label="Name"
+                    required
                     value={formData.name}
                     onChange={handleChange}
                     fullWidth
@@ -70,6 +71,7 @@ const ContactForm = () => {
                   <TextField
                     name="email"
                     label="Email"
+                    required
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -80,6 +82,7 @@ const ContactForm = () => {
                   <TextField
                     name="message"
                     label="Message"
+                    required
                     multiline
                     rows={4}
                     value={formData.message}
