@@ -21,6 +21,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import calculator from "../assets/calculator.png";
+import randomuserapi from "../assets/randomusrapi.png";
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -38,16 +41,16 @@ export default function Project() {
 
   const [fadeTriggered, setFadeTriggered] = useState(false);
 
-    // Callback function to handle scroll event
+    
     const handleScroll = () => {
-        if (window.scrollY > 900) { // Adjust the scroll threshold as needed
+        if (window.scrollY > 900) { 
         setFadeTriggered(true);
         } else {
         setFadeTriggered(false);
         }
     };
 
-    // Attach scroll event listener when component mounts
+    
     React.useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => {
@@ -72,9 +75,9 @@ export default function Project() {
         console.error('Error sharing:', error);
       }
     } else {
-      // Fallback for browsers that don't support Web Share API
+      
       console.log('Web Share API not supported');
-      // You can provide a fallback sharing method here, such as opening a modal with sharing options
+      
     }
   };
 
@@ -117,6 +120,34 @@ export default function Project() {
         git:"https://github.com/shan345/portfolio",
       },
       transitionTime: 5000,
+    },
+
+    {
+      title: 'Calculator',
+      description:
+        'It is a Simple basic arithmetic Calculator',
+      image: calculator,
+      more: {
+        overview:"The calculator project is designed to provide a user-friendly interface for basic arithmetic operations. The HTML structure includes buttons for numbers 0-9, decimal point, and operations such as addition, subtraction, multiplication, and division. CSS styling is applied to create a clean and modern appearance, with a responsive layout that adapts well to different screen sizes. JavaScript functionality is implemented to handle user input, perform calculations based on the selected operations, and display the results dynamically on the calculator screen. The project aims to offer a practical and interactive tool for performing calculations conveniently within a web browser.",
+        techstack: "HTML, CSS and JAVA SCRIPT",
+        live:"https://shan345.github.io/calculator/",
+        git:"https://github.com/shan345/calculator",
+      },
+      transitionTime: 5500,
+    },
+
+    {
+      title: 'RandomUser API',
+      description:
+        'Random User API with Typescript',
+      image: randomuserapi,
+      more: {
+        overview:"The project integrates React with TypeScript and Material-UI to create a user interface that interacts with the Random User API. The user interface includes components such as cards to display randomly generated user profiles fetched from the API. TypeScript is leveraged to ensure type safety and enhance code readability, making it easier to manage data structures and API responses. Material-UI components are used for styling and layout, providing a polished and responsive design for the user interface. The project aims to showcase integration of modern technologies like React, TypeScript, and Material-UI while utilizing external data from the Random User API to create a dynamic and engaging application.",
+        techstack: "React(Material UI, Typescript)",
+        live:"https://shan345.github.io/randomuserapi/",
+        git:"https://github.com/shan345/randomuserapi",
+      },
+      transitionTime: 6000,
     }
     
   ];
@@ -135,7 +166,7 @@ export default function Project() {
           </Grid>
           </Grow>
 
-              <Grid container spacing={3} xs={12} md={10} lg={8} justifyContent="center">
+              <Grid container spacing={3} xs={12} md={10} lg={8} >
                 {projectsData.map((project, index) => (
                   <Grid item xs={10} md={4} lg={4} >
                     <Grow in={fadeTriggered} timeout={project.transitionTime}>
@@ -155,7 +186,7 @@ export default function Project() {
                       </CardActions>
                       <Collapse in={expanded} timeout="auto" unmountOnExit>
                           <CardContent>
-                              <Typography paragraph>OVERVIEW: {project.more.overview}{project.more.techstack} </Typography>
+                              <Typography paragraph>OVERVIEW: {project.more.overview}</Typography>
                               <Typography paragraph>TECH STACK: {project.more.techstack} </Typography>
                               <Typography paragraph>LIVE AT: <Link color="inherit" href={project.more.live}> {project.more.live} </Link></Typography>
                               <Typography paragraph>REPOSITORY: <Link color="inherit" href={project.more.git}> {project.more.git} </Link></Typography>
