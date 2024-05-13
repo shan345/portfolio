@@ -166,7 +166,7 @@ export default function Project() {
           </Grid>
           </Grow>
 
-              <Grid container spacing={3} xs={12} md={10} lg={8} >
+              <Grid container spacing={3} xs={12} md={10} lg={8} justifyContent={{xs:"center", md:"flex-start"}}>
                 {projectsData.map((project, index) => (
                   <Grid item xs={10} md={4} lg={4} >
                     <Grow in={fadeTriggered} timeout={project.transitionTime}>
