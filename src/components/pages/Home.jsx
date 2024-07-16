@@ -22,7 +22,7 @@ function Home() {
             <Box>
                 <Navbar/>
                 <Banner/>
-                {/* <Particle showParticles={true}/> */}
+                <Particle showParticles={true}/>
             </Box>
             <Box id="about"><About/></Box>
             <Box id="tech-skills"><Skills/></Box>
