@@ -1,102 +1,79 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import theme from "./ui/Theme";
-import { AppBar, Typography,ThemeProvider, Icon,Grid,Divider, Toolbar, Button, Avatar, Tabs, Tab, Box, useScrollTrigger, Slide, Container } from '@mui/material';
+import { Typography, ThemeProvider, Grid, Avatar, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import techSkill from "../assets/tech skill 2.png"
+import techSkill from "../assets/tech skill 2.png";
 import Grow from '@mui/material/Grow';
+import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#1B324BDC',
+    backgroundColor: '#1B324BDC',
     border: "1px solid rgba(59, 74, 89, 0.2)",
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.primary,
-  }));
+}));
 
-function About(){
-  
+function Skills() {
     const [fadeTriggered, setFadeTriggered] = useState(false);
+    const [skills, setSkills] = useState([]);
 
-    // Callback function to handle scroll event
-    const handleScroll = () => {
-        if (window.scrollY > 600) { // Adjust the scroll threshold as needed
-        setFadeTriggered(true);
-        } else {
-        setFadeTriggered(false);
-        }
-    };
-
-    // Attach scroll event listener when component mounts
-    React.useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-        window.removeEventListener('scroll', handleScroll);
-        };
+    useEffect(() => {
+        axios.get(`${API_BASE_URL}/api/skills`)
+            .then(res => setSkills(res.data))
+            .catch(() => {
+                // Fallback hardcoded skills
+                setSkills([
+                    { _id: '1', name: 'PYTHON', gridSize: 8 },
+                    { _id: '2', name: 'C', gridSize: 4 },
+                    { _id: '3', name: 'JAVA SCRIPT', gridSize: 6 },
+                    { _id: '4', name: 'MONGO DB', gridSize: 6 },
+                    { _id: '5', name: 'EXPRESS JS', gridSize: 4 },
+                    { _id: '6', name: 'REACT JS', gridSize: 8 },
+                    { _id: '7', name: 'HTML & CSS', gridSize: 8 },
+                    { _id: '8', name: 'NODE JS', gridSize: 4 },
+                    { _id: '9', name: 'SQL', gridSize: 2 },
+                    { _id: '10', name: 'GIT', gridSize: 3 },
+                    { _id: '11', name: 'API', gridSize: 2 },
+                    { _id: '12', name: 'ETHICAL HACKING', gridSize: 5 },
+                ]);
+            });
     }, []);
 
-  return(
-    <React.Fragment>
-      
-      <ThemeProvider theme={theme}> 
-        <Box mt="70px">
-            <Grid container justifyContent="center">
-                <Grow in={fadeTriggered} timeout={3000}>
-                <Grid item xs={12} marginBottom="20px" display="flex" flexDirection="row" alignItems="center" justifyContent="center">
-                    <Avatar alt="Tech Skill"  src={`${techSkill}`}></Avatar>
-                    <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight= 'bold'>TECHNICAL SKILLS</Typography>
-                </Grid>
-                </Grow>
+    useEffect(() => {
+        const handleScroll = () => setFadeTriggered(window.scrollY > 600);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-                <Grow in={fadeTriggered} timeout={3500}>
-                <Grid container spacing={2} xs={12} sm={10} lg={5} md={7}>
-                    <Grid item xs={8}>
-                        <Item>PYTHON</Item>
+    return (
+        <React.Fragment>
+            <ThemeProvider theme={theme}>
+                <Box mt="70px">
+                    <Grid container justifyContent="center">
+                        <Grow in={fadeTriggered} timeout={3000}>
+                            <Grid item xs={12} marginBottom="20px" display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+                                <Avatar alt="Tech Skill" src={`${techSkill}`} />
+                                <Typography textAlign="center" variant="h4" color="text.secondary" fontWeight='bold'>TECHNICAL SKILLS</Typography>
+                            </Grid>
+                        </Grow>
+                        <Grow in={fadeTriggered} timeout={3500}>
+                            <Grid container spacing={2} xs={12} sm={10} lg={5} md={7}>
+                                {skills.map((skill) => (
+                                    <Grid item xs={skill.gridSize} key={skill._id}>
+                                        <Item>{skill.name}</Item>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Grow>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Item>C</Item>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Item>JAVA SCRIPT</Item>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Item>MONGO DB</Item>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Item>EXPRESS JS</Item>
-                    </Grid>
-                    <Grid item xs={8}>
-                        <Item>REACT JS</Item>
-                    </Grid>
-                    <Grid item xs={8}>
-                        <Item>HTML & CSS</Item>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Item>NODE JS</Item>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Item>SQL</Item>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Item>GIT</Item>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Item>API</Item>
-                    </Grid>
-                    <Grid item xs={5}>
-                        <Item>ETHICAL HACKING</Item>
-                    </Grid>
-                </Grid>
-                </Grow>
-            
-            </Grid>
-        
-        </Box>
-      </ThemeProvider> 
-      
-    </React.Fragment>
-  );
+                </Box>
+            </ThemeProvider>
+        </React.Fragment>
+    );
 }
 
-export default About; 
+export default Skills;
