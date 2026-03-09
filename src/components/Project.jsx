@@ -69,18 +69,18 @@ export default function Project() {
             </Grow>
             <Grid container spacing={3} xs={12} md={10} lg={8} justifyContent={{ xs: "center", md: "flex-start" }}>
               {projects.map((project, index) => (
-                <Grid item xs={10} md={4} lg={4} key={project._id}>
+                <Grid item xs={10} md={4} lg={4} key={project._id} display="flex">
                   <Grow in={fadeTriggered} timeout={4000 + index * 500}>
-                    <Card sx={{ bgcolor: "#1B324BDC" }}>
+                    <Card sx={{ bgcolor: "#1B324BDC", height: '100%', display: 'flex', flexDirection: 'column', width: '100%' }}>
                       {project.imageUrl && (
                         <CardMedia component="img" height="194" src={project.imageUrl} alt={project.title}
                           onError={e => { e.target.style.display = 'none'; }} />
                       )}
-                      <CardContent>
+                      <CardContent sx={{ flexGrow: 1 }}>
                         <Typography color="#ffffff" sx={{ fontWeight: 'bold' }}>{project.title}</Typography>
                         <Typography variant="body1" color="text.primary">{project.description}</Typography>
                       </CardContent>
-                      <CardActions disableSpacing>
+                      <CardActions disableSpacing sx={{ mt: 'auto' }}>
                         <IconButton aria-label="share" onClick={handleShareClick}>
                           <ShareIcon sx={{ color: "#B0BAC9" }} />
                         </IconButton>

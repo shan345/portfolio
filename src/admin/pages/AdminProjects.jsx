@@ -146,7 +146,45 @@ const AdminProjects = () => {
                             <TextField fullWidth label="Overview (expanded)" value={form.overview} onChange={e => setForm({ ...form, overview: e.target.value })} multiline rows={3} sx={inputSx} />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField fullWidth label="Image URL" value={form.imageUrl} onChange={e => setForm({ ...form, imageUrl: e.target.value })} placeholder="https://..." sx={inputSx} />
+                            <Typography sx={{ color: '#94a3b8', fontSize: 13, mb: 1, fontWeight: 600 }}>Project Image</Typography>
+                            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                                <Button
+                                    variant="outlined"
+                                    component="label"
+                                    disabled={saving}
+                                    sx={{ borderColor: '#6366f1', color: '#818cf8', whiteSpace: 'nowrap', '&:hover': { borderColor: '#818cf8', bgcolor: 'rgba(99,102,241,0.1)' } }}
+                                >
+                                    Upload File
+                                    <input
+                                        type="file"
+                                        hidden
+                                        accept="image/*"
+                                        onChange={async (e) => {
+                                            const file = e.target.files?.[0];
+                                            if (!file) return;
+                                            setSaving(true);
+                                            const formData = new FormData();
+                                            formData.append('image', file);
+                                            try {
+                                                const res = await axios.post(`${API_BASE_URL}/api/upload`, formData, authHeader());
+                                                setForm(f => ({ ...f, imageUrl: res.data.url }));
+                                                setAlert({ type: 'success', msg: 'Image uploaded successfully!' });
+                                            } catch (err) {
+                                                setAlert({ type: 'error', msg: 'Image upload failed.' });
+                                            } finally {
+                                                setSaving(false);
+                                            }
+                                        }}
+                                    />
+                                </Button>
+                                <Typography sx={{ color: '#64748b', fontSize: 13 }}>OR</Typography>
+                                <TextField fullWidth size="small" label="Paste Image URL directly" value={form.imageUrl} onChange={e => setForm({ ...form, imageUrl: e.target.value })} placeholder="https://..." sx={inputSx} />
+                            </Box>
+                            {form.imageUrl && (
+                                <Box mt={2}>
+                                    <img src={form.imageUrl} alt="Preview" style={{ height: 100, borderRadius: 8, border: '1px solid #334155', objectFit: 'cover' }} />
+                                </Box>
+                            )}
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField fullWidth label="Live URL" value={form.liveUrl} onChange={e => setForm({ ...form, liveUrl: e.target.value })} sx={inputSx} />

@@ -101,6 +101,61 @@ const AdminHero = () => {
 
                 <Divider sx={{ borderColor: '#334155', mb: 3 }} />
 
+                <Typography sx={{ color: '#94a3b8', fontSize: 13, mb: 1.5, fontWeight: 600 }}>PROFILE IMAGE</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                        {hero.profileImage ? (
+                            <Box
+                                component="img"
+                                src={hero.profileImage}
+                                alt="Profile"
+                                sx={{ width: 100, height: 100, borderRadius: '12px', objectFit: 'cover', border: '1px solid #334155' }}
+                            />
+                        ) : (
+                            <Box sx={{ width: 100, height: 100, borderRadius: '12px', bgcolor: 'rgba(255,255,255,0.05)', border: '1px dashed #475569', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <Typography sx={{ color: '#64748b', fontSize: 12 }}>No Image</Typography>
+                            </Box>
+                        )}
+                        <Button
+                            variant="outlined"
+                            component="label"
+                            disabled={saving}
+                            sx={{ borderColor: '#6366f1', color: '#818cf8', '&:hover': { borderColor: '#818cf8', bgcolor: 'rgba(99,102,241,0.1)' } }}
+                        >
+                            Upload Image
+                            <input
+                                type="file"
+                                hidden
+                                accept="image/*"
+                                onChange={async (e) => {
+                                    const file = e.target.files?.[0];
+                                    if (!file) return;
+                                    setSaving(true);
+                                    const formData = new FormData();
+                                    formData.append('image', file);
+                                    try {
+                                        const res = await axios.post(`${API_BASE_URL}/api/upload`, formData, authHeader());
+                                        setHero(h => ({ ...h, profileImage: res.data.url }));
+                                        setAlert({ type: 'success', msg: 'Image uploaded successfully!' });
+                                    } catch (err) {
+                                        setAlert({ type: 'error', msg: 'Image upload failed.' });
+                                    } finally {
+                                        setSaving(false);
+                                    }
+                                }}
+                            />
+                        </Button>
+                        {hero.profileImage && (
+                            <Button size="small" color="error" onClick={() => setHero(h => ({ ...h, profileImage: '' }))}>Remove</Button>
+                        )}
+                    </Box>
+                    <TextField fullWidth size="small" label="Or paste Image URL" value={hero.profileImage || ''}
+                        onChange={e => setHero({ ...hero, profileImage: e.target.value })}
+                        sx={inputSx} />
+                </Box>
+
+                <Divider sx={{ borderColor: '#334155', mb: 3 }} />
+
                 <Button onClick={handleSave} variant="contained" disabled={saving} startIcon={saving ? <CircularProgress size={18} /> : <SaveIcon />}
                     sx={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: '8px', py: 1.2, px: 3 }}>
                     {saving ? 'Saving...' : 'Save Changes'}

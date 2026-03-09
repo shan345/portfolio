@@ -27,18 +27,52 @@ function Skills() {
             .catch(() => {
                 // Fallback hardcoded skills
                 setSkills([
-                    { _id: '1', name: 'PYTHON', gridSize: 8 },
-                    { _id: '2', name: 'C', gridSize: 4 },
-                    { _id: '3', name: 'JAVA SCRIPT', gridSize: 6 },
-                    { _id: '4', name: 'MONGO DB', gridSize: 6 },
-                    { _id: '5', name: 'EXPRESS JS', gridSize: 4 },
-                    { _id: '6', name: 'REACT JS', gridSize: 8 },
-                    { _id: '7', name: 'HTML & CSS', gridSize: 8 },
-                    { _id: '8', name: 'NODE JS', gridSize: 4 },
-                    { _id: '9', name: 'SQL', gridSize: 2 },
-                    { _id: '10', name: 'GIT', gridSize: 3 },
-                    { _id: '11', name: 'API', gridSize: 2 },
-                    { _id: '12', name: 'ETHICAL HACKING', gridSize: 5 },
+                    // Row 1: Languages
+                    { _id: '1', name: 'JavaScript', gridSize: 4 },
+                    { _id: '2', name: 'TypeScript', gridSize: 4 },
+                    { _id: '3', name: 'Python', gridSize: 4 },
+                    // Row 2: Backend
+                    { _id: '4', name: 'Node.js', gridSize: 4 },
+                    { _id: '5', name: 'Express.js', gridSize: 4 },
+                    { _id: '6', name: 'NestJS', gridSize: 4 },
+                    // Row 3: Frontend
+                    { _id: '7', name: 'React', gridSize: 3 },
+                    { _id: '8', name: 'Next.js', gridSize: 3 },
+                    { _id: '9', name: 'Redux', gridSize: 3 },
+                    { _id: '10', name: 'HTML & CSS', gridSize: 3 },
+                    // Row 4: Databases
+                    { _id: '11', name: 'MongoDB', gridSize: 4 },
+                    { _id: '12', name: 'PostgreSQL', gridSize: 4 },
+                    { _id: '13', name: 'Redis', gridSize: 4 },
+                    // Row 5: API Protocols
+                    { _id: '14', name: 'REST API', gridSize: 3 },
+                    { _id: '15', name: 'gRPC', gridSize: 3 },
+                    { _id: '16', name: 'GraphQL', gridSize: 3 },
+                    { _id: '17', name: 'WebSocket', gridSize: 3 },
+                    // Row 6: ORM / API Tools
+                    { _id: '18', name: 'Prisma', gridSize: 4 },
+                    { _id: '19', name: 'Sequelize', gridSize: 4 },
+                    { _id: '20', name: 'Swagger / OpenAPI', gridSize: 4 },
+                    // Row 7: More Backend
+                    { _id: '21', name: 'Django', gridSize: 4 },
+                    { _id: '22', name: 'Flask', gridSize: 4 },
+                    { _id: '23', name: 'WordPress', gridSize: 4 },
+                    // Row 8: DevOps & Cloud
+                    { _id: '24', name: 'Docker', gridSize: 3 },
+                    { _id: '25', name: 'AWS', gridSize: 3 },
+                    { _id: '26', name: 'DigitalOcean', gridSize: 6 },
+                    // Row 9: Tools
+                    { _id: '27', name: 'Git', gridSize: 3 },
+                    { _id: '28', name: 'Postman', gridSize: 3 },
+                    { _id: '29', name: 'Figma', gridSize: 3 },
+                    { _id: '30', name: 'Linux', gridSize: 3 },
+                    // Row 10: Auth & Integrations
+                    { _id: '31', name: 'SSO / OAuth', gridSize: 4 },
+                    { _id: '32', name: 'Twilio / MSG91', gridSize: 4 },
+                    { _id: '33', name: 'Email Integration', gridSize: 4 },
+                    // Row 11: Security
+                    { _id: '34', name: 'RBAC & Security', gridSize: 6 },
+                    { _id: '35', name: 'Ethical Hacking', gridSize: 6 },
                 ]);
             });
     }, []);

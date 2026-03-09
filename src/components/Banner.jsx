@@ -27,6 +27,7 @@ function Banner() {
   const [hero, setHero] = useState({
     greeting: "Hai there!",
     typewriterStrings: ["I'm Shan", "I'm a Software Engineer"],
+    profileImage: "",
     resumeLink: "https://drive.google.com/file/d/1oxhexkyGn4tRlBuQI540a_a5JU65OMn0/view?usp=sharing"
   });
 

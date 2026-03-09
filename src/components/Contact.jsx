@@ -79,7 +79,7 @@ const ContactForm = () => {
                     {isSubmitting ? <CircularProgress size={24} color="primary" /> : 'Send'}
                   </Button>
                   <Typography color="text.primary" ml="10px" mr="10px">or</Typography>
-                  <Link href="mailto:jamnishan345@gmail.com">
+                  <Link href="mailto:shan345.dev@gmail.com">
                     <Button variant="contained" color="primary">Mail Me</Button>
                   </Link>
                 </Box>
