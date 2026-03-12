@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import theme from "./ui/Theme";
-import { ThemeProvider, Grid, Link, Box } from '@mui/material';
+import { ThemeProvider, Grid, Link, Box, Skeleton } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import techSkill from "../assets/skill-development.png";
 import Grow from '@mui/material/Grow';
@@ -31,11 +31,12 @@ export default function Project() {
   const [expanded, setExpanded] = React.useState({});
   const [fadeTriggered, setFadeTriggered] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get(`${API_BASE_URL}/api/projects`)
-      .then(res => setProjects(res.data))
-      .catch(() => { });
+      .then(res => { setProjects(res.data); setLoading(false); })
+      .catch(() => { setLoading(false); });
   }, []);
 
   useEffect(() => {
@@ -68,7 +69,20 @@ export default function Project() {
               </Grid>
             </Grow>
             <Grid container spacing={3} xs={12} md={10} lg={8} justifyContent={{ xs: "center", md: "flex-start" }}>
-              {projects.map((project, index) => (
+              {loading
+                ? Array.from({ length: 3 }).map((_, i) => (
+                    <Grid item xs={10} md={4} lg={4} key={i} display="flex">
+                      <Box sx={{ bgcolor: "#1B324BDC", borderRadius: 2, width: '100%', overflow: 'hidden' }}>
+                        <Skeleton variant="rectangular" height={194} sx={{ bgcolor: 'rgba(255,255,255,0.07)' }} />
+                        <Box sx={{ p: 2 }}>
+                          <Skeleton variant="text" width="70%" height={28} sx={{ bgcolor: 'rgba(255,255,255,0.07)' }} />
+                          <Skeleton variant="text" width="90%" height={20} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }} />
+                          <Skeleton variant="text" width="80%" height={20} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }} />
+                        </Box>
+                      </Box>
+                    </Grid>
+                  ))
+                : projects.map((project, index) => (
                 <Grid item xs={10} md={4} lg={4} key={project._id} display="flex">
                   <Grow in={fadeTriggered} timeout={4000 + index * 500}>
                     <Card sx={{ bgcolor: "#1B324BDC", height: '100%', display: 'flex', flexDirection: 'column', width: '100%' }}>

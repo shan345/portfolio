@@ -6,7 +6,8 @@ import {
   Grid,
   Link,
   Button,
-  Box
+  Box,
+  Skeleton
 } from "@mui/material";
 import { keyframes } from "@mui/system";
 import bg from "../assets/bg.png";
@@ -24,6 +25,7 @@ const arrowMovement = keyframes`
 `;
 
 function Banner() {
+  const [loading, setLoading] = useState(true);
   const [hero, setHero] = useState({
     greeting: "Hai there!",
     typewriterStrings: ["I'm Shan", "I'm a Software Engineer"],
@@ -33,8 +35,8 @@ function Banner() {
 
   useEffect(() => {
     axios.get(`${API_BASE_URL}/api/hero`)
-      .then(res => setHero(res.data))
-      .catch(() => { }); // fallback to defaults
+      .then(res => { setHero(res.data); setLoading(false); })
+      .catch(() => { setLoading(false); }); // fallback to defaults
   }, []);
 
   const typing = (typewriter) => {
@@ -63,27 +65,38 @@ function Banner() {
           <Grid container sx={{
             backgroundColor: "#06050956", borderRadius: "16px", border: "1px solid #A0A0A03D",
             height: { xs: "40%", md: "50%" }, width: { xs: "80%", md: "40%" },
-            alignItems: "center", justifyContent: "center", textAlign: "center"
+            alignItems: "center", justifyContent: "center", textAlign: "center",
+            px: 3
           }}>
             <Grid item xs={12}>
-              <Typography sx={{ color: "#EEFF00D2", fontWeight: "bold", fontSize: 50, fontFamily: "Dancing Script" }}>
-                {hero.greeting}
-              </Typography>
+              {loading ? (
+                <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
+                  <Skeleton variant="text" width="60%" height={70} sx={{ bgcolor: "rgba(255,255,255,0.1)", borderRadius: 2 }} />
+                  <Skeleton variant="text" width="80%" height={60} sx={{ bgcolor: "rgba(255,255,255,0.1)", borderRadius: 2 }} />
+                  <Skeleton variant="rounded" width={140} height={44} sx={{ bgcolor: "rgba(255,255,255,0.1)", borderRadius: 2, mt: 1 }} />
+                </Box>
+              ) : (
+                <>
+                  <Typography sx={{ color: "#EEFF00D2", fontWeight: "bold", fontSize: 50, fontFamily: "Dancing Script" }}>
+                    {hero.greeting}
+                  </Typography>
 
-              <Typography sx={{ color: "#DEDEDE", fontWeight: "bold", fontSize: { xs: 35, lg: 50 }, fontFamily: "Segoe UI" }}>
-                <Typewriter
-                  key={hero.typewriterStrings.join(',')}
-                  onInit={typing}
-                  options={{ cursor: "/>", loop: true, deleteSpeed: 5 }}
-                />
-              </Typography>
+                  <Typography sx={{ color: "#DEDEDE", fontWeight: "bold", fontSize: { xs: 35, lg: 50 }, fontFamily: "Segoe UI" }}>
+                    <Typewriter
+                      key={hero.typewriterStrings.join(',')}
+                      onInit={typing}
+                      options={{ cursor: "/>", loop: true, deleteSpeed: 5 }}
+                    />
+                  </Typography>
 
-              {hero.resumeLink && (
-                <Link href={hero.resumeLink} target="_blank">
-                  <Button variant="contained" color="primary" sx={{ mt: "30px" }} endIcon={<ResumeIco />} size="large">
-                    RESUME
-                  </Button>
-                </Link>
+                  {hero.resumeLink && (
+                    <Link href={hero.resumeLink} target="_blank">
+                      <Button variant="contained" color="primary" sx={{ mt: "30px" }} endIcon={<ResumeIco />} size="large">
+                        RESUME
+                      </Button>
+                    </Link>
+                  )}
+                </>
               )}
             </Grid>
           </Grid>

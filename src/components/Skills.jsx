@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import theme from "./ui/Theme";
-import { Typography, ThemeProvider, Grid, Avatar, Box } from '@mui/material';
+import { Typography, ThemeProvider, Grid, Avatar, Box, Skeleton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import techSkill from "../assets/tech skill 2.png";
@@ -20,11 +20,13 @@ const Item = styled(Paper)(({ theme }) => ({
 function Skills() {
     const [fadeTriggered, setFadeTriggered] = useState(false);
     const [skills, setSkills] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`${API_BASE_URL}/api/skills`)
-            .then(res => setSkills(res.data))
+            .then(res => { setSkills(res.data); setLoading(false); })
             .catch(() => {
+                setLoading(false);
                 // Fallback hardcoded skills
                 setSkills([
                     // Row 1: Languages
@@ -96,11 +98,18 @@ function Skills() {
                         </Grow>
                         <Grow in={fadeTriggered} timeout={3500}>
                             <Grid container spacing={2} xs={12} sm={10} lg={5} md={7}>
-                                {skills.map((skill) => (
-                                    <Grid item xs={skill.gridSize} key={skill._id}>
-                                        <Item>{skill.name}</Item>
-                                    </Grid>
-                                ))}
+                                {loading
+                                    ? Array.from({ length: 12 }).map((_, i) => (
+                                        <Grid item xs={i % 3 === 0 ? 4 : 4} key={i}>
+                                            <Skeleton variant="rounded" height={38} sx={{ bgcolor: 'rgba(255,255,255,0.07)', borderRadius: '6px' }} />
+                                        </Grid>
+                                    ))
+                                    : skills.map((skill) => (
+                                        <Grid item xs={skill.gridSize} key={skill._id}>
+                                            <Item>{skill.name}</Item>
+                                        </Grid>
+                                    ))
+                                }
                             </Grid>
                         </Grow>
                     </Grid>
@@ -110,4 +119,4 @@ function Skills() {
     );
 }
 
-export default Skills;
+export default Skills;

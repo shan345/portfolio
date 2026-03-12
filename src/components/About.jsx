@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import theme from "./ui/Theme";
-import { AppBar, Typography, ThemeProvider, Link, Grid, Divider, Toolbar, Button, Avatar, Box, useMediaQuery, Chip } from '@mui/material';
+import { AppBar, Typography, ThemeProvider, Link, Grid, Divider, Toolbar, Button, Avatar, Box, useMediaQuery, Chip, Skeleton } from '@mui/material';
 import ResumeIco from '@mui/icons-material/Description';
 import WorkIcon from '@mui/icons-material/WorkOutline';
 import Grow from '@mui/material/Grow';
@@ -15,6 +15,7 @@ import API_BASE_URL from "../config/api";
 function About() {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const [fadeTriggered, setFadeTriggered] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Hero holds the profile image
   const [hero, setHero] = useState(null);
@@ -31,8 +32,9 @@ function About() {
 
   useEffect(() => {
     // Fetch both about details and hero for the profile image
-    axios.get(`${API_BASE_URL}/api/about`).then(res => setAbout(res.data)).catch(() => { });
-    axios.get(`${API_BASE_URL}/api/hero`).then(res => setHero(res.data)).catch(() => { });
+    const p1 = axios.get(`${API_BASE_URL}/api/about`).then(res => setAbout(res.data)).catch(() => {});
+    const p2 = axios.get(`${API_BASE_URL}/api/hero`).then(res => setHero(res.data)).catch(() => {});
+    Promise.allSettled([p1, p2]).then(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -47,6 +49,28 @@ function About() {
     'Internship': '#10b981',
     'Freelance': '#ec4899',
   };
+
+  if (loading) {
+    return (
+      <ThemeProvider theme={theme}>
+        <Box id="about" height="auto" mt="60px">
+          <Grid container justifyContent="center" alignItems="center" spacing={4}>
+            <Grid item xs={10} lg={5} display="flex" justifyContent="center">
+              <Skeleton variant="circular" sx={{ width: { xs: 300, lg: 480 }, height: { xs: 300, lg: 480 }, bgcolor: 'rgba(255,255,255,0.06)' }} />
+            </Grid>
+            <Grid item xs={10} lg={7}>
+              <Skeleton variant="text" width="40%" height={50} sx={{ bgcolor: 'rgba(255,255,255,0.06)' }} />
+              <Skeleton variant="text" width="80%" height={28} sx={{ bgcolor: 'rgba(255,255,255,0.04)', mt: 3 }} />
+              <Skeleton variant="text" width="70%" height={24} sx={{ bgcolor: 'rgba(255,255,255,0.04)' }} />
+              <Skeleton variant="text" width="40%" height={50} sx={{ bgcolor: 'rgba(255,255,255,0.06)', mt: 4 }} />
+              <Skeleton variant="text" width="75%" height={24} sx={{ bgcolor: 'rgba(255,255,255,0.04)' }} />
+              <Skeleton variant="text" width="65%" height={24} sx={{ bgcolor: 'rgba(255,255,255,0.04)' }} />
+            </Grid>
+          </Grid>
+        </Box>
+      </ThemeProvider>
+    );
+  }
 
   return (
     <React.Fragment>
